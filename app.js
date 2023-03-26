@@ -74,3 +74,6 @@ function createVisualization2() {
 
     // Add your D3.js code for creating the second visualization here
 }
+
+
+createVisualization1();
