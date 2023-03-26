@@ -1,1 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.bar {
+  fill: steelblue;
+  stroke: white;
+  stroke-width: 1px;
+}
+
+.axis text {
+  font-size: 12px;
+  fill: #666;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #333;
+  shape-rendering: crispEdges;
+}
