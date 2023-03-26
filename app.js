@@ -1,4 +1,4 @@
-function createInteractiveBarChart() {
+function createVisualization() {
   const data = [4, 8, 15, 16, 23, 42];
 
   const width = 420;
@@ -20,13 +20,7 @@ function createInteractiveBarChart() {
 
   bar.append("rect")
     .attr("width", x)
-    .attr("height", barHeight - 1)
-    .on("mouseover", function() {
-      d3.select(this).style("fill", "orange");
-    })
-    .on("mouseout", function() {
-      d3.select(this).style("fill", "steelblue");
-    });
+    .attr("height", barHeight - 1);
 
   bar.append("text")
     .attr("x", d => x(d) - 3)
@@ -35,4 +29,4 @@ function createInteractiveBarChart() {
     .text(d => d);
 }
 
-createInteractiveBarChart();
+createVisualization();
