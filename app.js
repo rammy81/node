@@ -8,7 +8,7 @@ function createVisualization() {
     .domain([0, d3.max(data)])
     .range([0, width]);
 
-  const chart = d3.select("#visualization")
+  const chart = d3.select("#bar1")
     .append("svg")
       .attr("width", width)
       .attr("height", barHeight * data.length);
