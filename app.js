@@ -8,7 +8,7 @@ function createVisualization() {
     .domain([0, d3.max(data)])
     .range([0, width]);
 
-  const chart = d3.select("#visualization")
+  const chart = d3.select("#firstbar")
     .append("svg")
       .attr("width", width)
       .attr("height", barHeight * data.length);
@@ -40,7 +40,7 @@ function createInteractiveBarChart() {
     .domain([0, d3.max(data)])
     .range([0, width]);
 
-  const chart = d3.select("#visualization")
+  const chart = d3.select("#2ndBar")
     .append("svg")
       .attr("width", width)
       .attr("height", barHeight * data.length);
@@ -66,6 +66,3 @@ function createInteractiveBarChart() {
     .attr("dy", ".35em")
     .text(d => d);
 }
-
-
-createInteractiveBarChart();
