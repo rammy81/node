@@ -66,3 +66,6 @@ function createInteractiveBarChart() {
     .attr("dy", ".35em")
     .text(d => d);
 }
+
+createVisualization();
+createInteractiveBarChart();
