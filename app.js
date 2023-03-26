@@ -68,4 +68,3 @@ function createInteractiveBarChart() {
 }
 
 createVisualization();
-createInteractiveBarChart();
