@@ -29,8 +29,6 @@ function createVisualization() {
     .text(d => d);
 }
 
-createVisualization();
-
 
 function createInteractiveBarChart() {
   const data = [4, 8, 15, 16, 23, 42];
@@ -69,4 +67,5 @@ function createInteractiveBarChart() {
     .text(d => d);
 }
 
+createVisualization();
 createInteractiveBarChart();
