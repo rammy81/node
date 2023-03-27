@@ -7,9 +7,6 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.12.2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.12.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
   <style>
     /* Define styles for the plot container */
     #plot-container {
@@ -40,35 +37,47 @@
   <div id="bar1"></div>
   <h1>hello</h1>
   <p>Paragraph</p>
-  <div id="my-plot"></div>
+  <div id="plot-container"></div>
+  <div id="tooltip"></div>
 
   <script>
-    const plotData = [
-      {"sex": "M", "gold": 5, "silver": 3, "bronze": 2, "sport": "Athletics"},
-      {"sex": "F", "gold": 2, "silver": 4, "bronze": 5, "sport": "Swimming"},
-      {"sex": "M", "gold": 1, "silver": 2, "bronze": 0, "sport": "Boxing"},
-      {"sex": "F", "gold": 3, "silver": 1, "bronze": 3, "sport": "Cycling"}
+    // Define the data as an array of objects
+    const data = [
+      {x: 10, y: 20},
+      {x: 20, y: 25},
+      {x: 30, y: 10},
+      {x: 40, y: 30},
+      {x: 50, y: 15},
+      {x: 60, y: 40},
+      {x: 70, y: 5},
+      {x: 80, y: 20},
+      {x: 90, y: 10}
     ];
 
-    const plotConfig = {
-      x: "sex",
-      y: { value: "gold", reduce: "sum" },
-      color: "sport",
-      mark: "bar"
-    };
-    const plotOptions = { color: { legend: true } };
-    const plotContainer = document.getElementById("my-plot");
-    const plot = vl.mark(plotConfig.mark)
-                  .encode(
-                    vl.x().fieldN(plotConfig.x),
-                    vl.y().fieldQ(plotConfig.y),
-                    vl.color().fieldN(plotConfig.color)
-                  )
-                  .data(plotData)
-                  .toJSON();
-    vegaEmbed("#my-plot", plot, plotOptions);
-  </script>
-  <div id="barc"></div>
-  <div id="fourhun"></div>
-</body>
-</html>
+    // Define the dimensions and margins of the plot
+    const margin = {top: 20, right: 30, bottom: 30, left: 40};
+    const width = 800 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
+
+    // Create an SVG element to hold the plot
+    const svg = d3.select("#plot-container")
+                  .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+                  .append("g")
+                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Define the x and y scales and their domains
+    const xScale = d3.scaleLinear()
+                     .domain([0, d3.max(data, d => d.x)])
+                     .range([0, width]);
+    const yScale = d3.scaleLinear()
+                     .domain([0, d3.max(data, d => d.y)])
+                     .range([height, 0]);
+
+    // Add the x and y axes to the plot
+    svg.append("g")
+       .attr("transform", "translate(0," + height + ")")
+       .call(d3.axisBottom(xScale));
+    svg.append("g")
+       .call
