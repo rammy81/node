@@ -20,7 +20,13 @@
     
     
     
-    
+    <script> 
+        Plot.auto(athletes, {
+  x: "sex",
+  y: { value: "gold", reduce: "sum" },
+  color: "sport",
+  mark: "bar"
+        }).plot({ color: { legend: true } }) </script>
     
     
     
@@ -39,6 +45,9 @@
     
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.12.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.12.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
 </body>
 </html>
 
