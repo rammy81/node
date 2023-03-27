@@ -1,58 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.12.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.12.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3.js Project</title>
-      <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none;"></div>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3.js Project</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.12.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.12.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+  <script src="app.js"></script>
 </head>
 <body>
-    <div id="bar1"></div>
-    
-    <h1>hello</h1>
-    <p>Paragraph</p>
-    
-
-    kdjakdjnsakjdsia
-    
-    <div id="my-plot"></div>
-    
-    <script> 
-        Plot.auto(athletes, {
-  x: "sex",
-  y: { value: "gold", reduce: "sum" },
-  color: "sport",
-  mark: "bar"
-        }).plot({ color: { legend: true } }) </script>
-    
-    
-    
-        <div id="barc"></div>
-    
-            <div id="fourhun"></div>
-    
-    djakdjskdjsakdjaskd
-    dsajkdasjdkasjd
-    
-    
-    
-    
-       
-        <div id="barc"></div>
-    
-
-</body>
-</html>
-
-
-
+  <div id="bar1"></div>
+  <h1>hello</h1>
+  <p>Paragraph</p>
+  <div id="my-plot"></div>
+  <script> 
+    const plotData = [
+      {"sex": "M", "gold": 5, "silver": 3, "bronze": 2, "sport": "Athletics"},
+      {"sex": "F", "gold": 2, "silver": 4, "bronze": 5, "sport": "Swimming"},
+      {"sex": "M", "gold": 1, "silver": 2, "bronze": 0, "sport": "Boxing"},
+      {"sex": "F", "gold": 3, "silver": 1, "bronze": 3, "sport": "Cycling"}
+    ];
+    const plotConfig = {
+      x: "sex",
+      y: { value: "gold", reduce: "sum" },
+      color: "sport",
+      mark: "bar"
+    };
+    const plotOptions = { color: { legend: true } };
+    const plotContainer = document.getElementById("my-plot");
+    const plot = vl.mark(plotConfig.mark)
+                  .encode(
+                    vl.x().fieldN(plotConfig.x),
+                    vl.y().fieldQ(plotConfig.y),
+                    vl.color().fieldN(plotConfig.color)
+                  )
+                  .data(plotData)
+                  .toJSON();
+    vegaEmbed
