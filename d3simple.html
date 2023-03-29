@@ -13,24 +13,35 @@
       const width = 500;
       const height = 500;
     </script>
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
   </head>
   <body>
     <!-- Your D3 visualization will go here -->
     
+    <!-- A heading element that appears above the SVG element -->
     <h1>This is just above the svg area of 500 x 500</h1>
+    
+    <!-- An SVG element with a width and height of 500 pixels -->
     <svg width="500" height="500"></svg>
     
-      <script>
-    const svg = d3.select('svg');
+    <!-- A script that uses D3 to append a blue circle to the SVG element, with a center point at (width / 2, height / 2) and a radius of 50 pixels -->
+    <script>
+      // Use the D3 library to select the SVG element in the DOM
+      const svg = d3.select('svg');
 
-    const circle = svg.append('circle')
-      .attr('cx', width / 2)
-      .attr('cy', height / 2)
-      .attr('r', 50)
-      .attr('fill', 'blue');
-  </script>
-
-
+      // Use the D3 library to append a circle element to the SVG element
+      const circle = svg.append('circle')
+        // Set the x-coordinate of the center of the circle to half of the width variable
+        .attr('cx', width / 2)
+        // Set the y-coordinate of the center of the circle to half of the height variable
+        .attr('cy', height / 2)
+        // Set the radius of the circle to 50 pixels
+        .attr('r', 50)
+        // Set the fill color of the circle to blue
+        .attr('fill', 'blue');
+    </script>
     
   </body>
 </html>
