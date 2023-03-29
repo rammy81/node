@@ -19,6 +19,17 @@
     
     <h1>This is just above the svg area of 500 x 500</h1>
     <svg width="500" height="500"></svg>
+    
+      <script>
+    const svg = d3.select('svg');
+
+    const circle = svg.append('circle')
+      .attr('cx', width / 2)
+      .attr('cy', height / 2)
+      .attr('r', 50)
+      .attr('fill', 'blue');
+  </script>
+
 
     
   </body>
